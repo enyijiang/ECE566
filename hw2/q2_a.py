@@ -2,12 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Set random seed for reproducibility
-np.random.seed(42)
+# np.random.seed(42)
 
 # Parameters
 n_iterations = 1000
 X0 = 1  # Initial value X_0 = 1
-f_prime_means = [lambda x: np.sign(x)*(np.abs(x)**0.5), lambda x: 2*x, lambda x: 3*(x**3)]
+f_prime_means = [lambda x: np.sign(x)*3./2 * (np.abs(x)**0.5), lambda x: 2*x, lambda x: 3*(x**3)]
 variance = 1
 
 # Step size schedules
@@ -26,7 +26,7 @@ def stochastic_gradient_descent(f_prime_mean, step_size_func, n_iterations=1000)
         # if k >= 2 and np.abs(X[k-1] - X[k-2]) < 1e-3:
             # break
         Y =  f_prime_mean(X[k-1]) + np.random.normal(0, np.sqrt(variance))  # Noisy gradient
-        a_k = step_size_func(k)
+        a_k = step_size_func(k+1)
         X[k] = X[k-1] - a_k * Y
     
     return X

@@ -68,17 +68,17 @@ a_10 = 10
 I_a_01_monte_carlo, se_a_01 = monte_carlo_estimate(a_01, n, dimensions)
 I_a_10_monte_carlo, se_a_10 = monte_carlo_estimate(a_10, n, dimensions)
 
-I_a_01_monte_carlo_b, se_a_01_b = monte_carlo_estimate_b(a_01, n, dimensions)
+# I_a_01_monte_carlo_b, se_a_01_b = monte_carlo_estimate_b(a_01, n, dimensions)
 I_a_10_monte_carlo_b, se_a_10_b = monte_carlo_estimate_b(a_10, n, dimensions)
 
 # Importance Sampling Estimation with accuracy using a truncated Gaussian proposal
-I_a_01_importance_sampling, se_importance_sampling_a01 = importance_sampling_with_auxiliary(n_samples=n, a=a_01)
+# I_a_01_importance_sampling, se_importance_sampling_a01 = importance_sampling_with_auxiliary(n_samples=n, a=a_01)
 I_a_10_importance_sampling, se_importance_sampling_a10 = importance_sampling_with_auxiliary(n_samples=n, a=a_10)
 
 # Print the results with confidence intervals
 print(f"Monte Carlo estimate for I(0.1) Part (A): {I_a_01_monte_carlo} ± {se_a_01}")
 print(f"Monte Carlo estimate for I(10) Part (A): {I_a_10_monte_carlo} ± {se_a_10}")
-print(f"Monte Carlo estimate for I(0.1) Part (B): {I_a_01_monte_carlo_b} ± {se_a_01_b}")
+# print(f"Monte Carlo estimate for I(0.1) Part (B): {I_a_01_monte_carlo_b} ± {se_a_01_b}")
 print(f"Monte Carlo estimate for I(10) Part (B): {I_a_10_monte_carlo_b} ± {se_a_10_b}")
-print(f"Importance sampling estimate for I(0.1) Part (B): {I_a_01_importance_sampling} ± {se_importance_sampling_a01}")
+# print(f"Importance sampling estimate for I(0.1) Part (B): {I_a_01_importance_sampling} ± {se_importance_sampling_a01}")
 print(f"Importance sampling estimate for I(10) Part (B): {I_a_10_importance_sampling} ± {se_importance_sampling_a10}")

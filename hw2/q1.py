@@ -25,9 +25,9 @@ log_sequence = np.log(sequence)
 
 # Plot the sequence of iterates on a log scale
 plt.figure(figsize=(8, 6))
-plt.plot(log_sequence, marker='o', label="GD Iterates (log scale)")
+plt.plot(np.log([i+1 for i in range(iterations+1)]), log_sequence, marker='o', label="GD Iterates (log scale)")
 plt.title("Gradient Descent Iterates for $f(x) = x^4$ (log scale)")
-plt.xlabel("Iteration")
+plt.xlabel("Log of Iteration")
 plt.ylabel("Log of x_k")
 plt.legend()
 plt.grid(True)
