@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm, laplace
+# import seaborn as sns
+
 
 def bootstrap_variance_estimator(n, K=1000, dist='normal'):
     # Step 1: Generate data
@@ -48,6 +50,7 @@ def plot_fitted_gaussian(bootstrap_estimates, dist_name):
     # Plot
     plt.clf()
     plt.plot(x_vals, kde_pdf, label='Empirical PDF', color='blue')
+    
     plt.plot(x_vals, fitted_pdf, label=f'Gaussian Fit (mu={0:.2f}, std={std:.2f})', color='red')
     plt.fill_between(x_vals, np.abs(kde_pdf - fitted_pdf), color='gray', alpha=0.3, label='$L_1$ Error')
     plt.legend()
@@ -57,7 +60,7 @@ def plot_fitted_gaussian(bootstrap_estimates, dist_name):
     plt.savefig(f'q4_gau_{dist_name}.pdf')
 
     # Compute L1 error
-    L1_error = np.sum(np.abs(bootstrap_estimates - fitted_pdf))
+    L1_error = np.sum(np.abs(kde_pdf - fitted_pdf))
     return L1_error
 
 # Run bootstrap for n = 6 and n = 100, Laplace Distribution

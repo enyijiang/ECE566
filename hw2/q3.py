@@ -42,7 +42,7 @@ def auxiliary_distribution_pdf(x, sigma):
     return multivariate_normal.pdf(x, mean=np.zeros(dim), cov=sigma**2)
 
 # Importance sampling with the auxiliary distribution
-def importance_sampling_with_auxiliary(n_samples=1000, a=0.1, dim=10, sigma=np.sqrt(1/(20*10))):
+def importance_sampling_with_auxiliary(n_samples=1000, a=0.1, dim=10, sigma=np.sqrt(1/(1000))):
     samples = sample_from_auxiliary_distribution(n_samples, dim, sigma)
     integral_estimates = []
     

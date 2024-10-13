@@ -73,7 +73,7 @@ def plot_fitted_gaussian(bootstrap_estimates, dist_name):
     plt.savefig(f'q4_gau_{dist_name}.pdf')
 
     # Compute L1 error
-    L1_error = np.sum(np.abs(bootstrap_estimates - fitted_pdf))
+    L1_error = np.sum(np.abs(kde_pdf - fitted_pdf))
     return L1_error
 
 # Gaussian fit for small n (n = 6)
