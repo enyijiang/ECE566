@@ -8,16 +8,18 @@ import matplotlib.pyplot as plt
 n = 500
 
 # True parameters for two Gaussians
-pi_true = 0.6
-mu1_true = np.array([1, 1])
-mu2_true = np.array([3, 3])
-cov1_true = np.array([[2, 0.1], [0.1, 2]])
-cov2_true = np.array([[1, 0.5], [0.5, 1]])
+# pi_true = 0.6
+# mu1_true = np.array([1, 1])
+# mu2_true = np.array([3, 3])
+# cov1_true = np.array([[2, 0.1], [0.1, 2]])
+# cov2_true = np.array([[1, 0.5], [0.5, 1]])
 
-# Generate samples
-y1 = np.random.multivariate_normal(mu1_true, cov1_true, size=int(pi_true * n))
-y2 = np.random.multivariate_normal(mu2_true, cov2_true, size=int((1 - pi_true) * n))
-data = np.vstack((y1, y2))
+# # Generate samples
+# y1 = np.random.multivariate_normal(mu1_true, cov1_true, size=int(pi_true * n))
+# y2 = np.random.multivariate_normal(mu2_true, cov2_true, size=int((1 - pi_true) * n))
+# data = np.vstack((y1, y2))
+
+data = np.loadtxt('data.txt')
 
 # Helper functions for E-step and M-step
 def e_step(data, pi, mu1, cov1, mu2, cov2):
@@ -79,8 +81,8 @@ def EM_algorithm(data, method, max_iter=200, tol=1e-6):
         mu1 = centers[0,:]
         mu2 = centers[1,:]
         
-        cov1 = np.cov(data[:250].T)
-        cov2 = np.cov(data[250:].T)
+        cov1 = np.cov(data[:100].T)
+        cov2 = np.cov(data[100:].T)
     
     # random initialization
     if method == 'random':
