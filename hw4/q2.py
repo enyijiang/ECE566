@@ -75,7 +75,7 @@ def sum_product_belief_propagation(iterations=10):
         for j in range(nodes):
             if (j, i) in new_messages:
                 beliefs[i] *= new_messages[(j, i)]
-        beliefs[i] /= beliefs[i].sum()  # Normalize
+        # beliefs[i] /= beliefs[i].sum()  # Normalize
     
     return beliefs
 
@@ -86,14 +86,6 @@ def approximate_partition_function(beliefs):
     # Multiply beliefs for each node
     for i in range(nodes):
         Z *= beliefs[i].sum()  # Sum over both states (0 and 1)
-
-    # Divide by edge terms to correct for over-counting
-    for i, j, positive in edges:
-        edge_sum = sum(
-            compatibility(x_i, x_j, positive) * beliefs[i][x_i] * beliefs[j][x_j]
-            for x_i in states for x_j in states
-        )
-        Z /= edge_sum  # Divide by the edge belief product
     
     return Z
 
